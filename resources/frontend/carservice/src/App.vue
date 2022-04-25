@@ -23,6 +23,7 @@ import Footer from "@/components/Footer.vue"
     margin: 0 auto;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
 }
 .footer-press-down {
     display: grid;
