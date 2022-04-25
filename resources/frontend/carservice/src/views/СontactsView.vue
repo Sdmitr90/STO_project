@@ -1,7 +1,7 @@
 <template>
     <section class="mid">
         <div class="main container">
-            <h1>About</h1>
+            <h1>Contacts</h1>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,
                 adipisci voluptate natus quas quos ducimus? Officiis culpa sapiente ut
