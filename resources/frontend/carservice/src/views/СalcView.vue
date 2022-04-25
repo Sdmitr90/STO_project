@@ -1,7 +1,7 @@
 <template>
     <section class="mid">
         <div class="main container">
-            <h1>Home</h1>
+            <h1>Calc</h1>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,
                 adipisci voluptate natus quas quos ducimus? Officiis culpa sapiente ut
@@ -35,3 +35,4 @@ p {
     color: #ffffff;
 }
 </style>
+
