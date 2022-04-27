@@ -10,23 +10,16 @@
                             <div class="calc__group-title_text">
                                 Двигатель внутреннего сгорания (ДВС и КПП)
                             </div>
-                            <div
-                                class="groupBtn"
-                                :class="isShowGroup1 ? 'activeShow' : ''"
-                                @click="openGroup1"
-                            ></div>
+                            <div class="groupBtn" :class="isShowGroup1 ? 'activeShow' : ''" @click="openGroup1">
+                            </div>
                         </div>
                         <div v-for="(jobItem, idx) in arrayMotor" :key="idx">
                             <div class="calc__grid-item" v-if="isShowGroup1">
                                 <div class="calc__item_text">
                                     <label>
-                                        <input
-                                            type="checkbox"
-                                            :value="jobItem"
-                                            v-model="chosenJobsArray"
-                                        />
+                                        <input type="checkbox" :value="jobItem" v-model="chosenJobsArray" />
                                         <span class="labelInput">{{
-                                            jobItem.type
+                                                jobItem.type
                                         }}</span>
                                     </label>
                                 </div>
@@ -37,23 +30,16 @@
                     <div class="calc__group">
                         <div class="calc__group-title">
                             Ходовая часть
-                            <div
-                                class="groupBtn"
-                                :class="isShowGroup2 ? 'activeShow' : ''"
-                                @click="openGroup2"
-                            ></div>
+                            <div class="groupBtn" :class="isShowGroup2 ? 'activeShow' : ''" @click="openGroup2">
+                            </div>
                         </div>
                         <div v-for="(jobItem, idx) in arrayWheels" :key="idx">
                             <div class="calc__grid-item" v-if="isShowGroup2">
                                 <div class="calc__item_text">
                                     <label>
-                                        <input
-                                            type="checkbox"
-                                            :value="jobItem"
-                                            v-model="chosenJobsArray"
-                                        />
+                                        <input type="checkbox" :value="jobItem" v-model="chosenJobsArray" />
                                         <span class="labelInput">{{
-                                            jobItem.type
+                                                jobItem.type
                                         }}</span>
                                     </label>
                                 </div>
@@ -66,9 +52,7 @@
                     <button class="calcBtn">Рассчитать стоимость</button>
                 </div>
                 <div class="container__sum">
-                    <span class="container__sum_text"
-                        >Примерная стоимость работ</span
-                    >
+                    <span class="container__sum_text">Примерная стоимость работ</span>
                     <span class="container__sum_totalSum">5000 p.</span>
                 </div>
             </div>
@@ -118,8 +102,9 @@ export default {
     display: flex;
     flex-direction: column;
     /* position: absolute; */
-    width: 100%$;
-    min-height: 1032px;
+    width: 1440px;
+    margin: 0 auto;
+    max-height: 1032px;
     /* left: 240px;
     top: 85px; */
     background: rgba(202, 198, 198, 0.67);
@@ -158,12 +143,8 @@ export default {
     display: flex;
     flex-direction: column;
     width: 1180px;
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
 }
-
-.container-calc__list {
-}
-
 .calc__grid-item {
     margin: 12px;
     text-align: left;
@@ -195,16 +176,12 @@ export default {
 }
 
 .groupBtn {
-    /* position: absolute; */
     display: flex;
     width: 50px;
     height: 50px;
     justify-content: center;
     align-items: center;
     font-size: 36px;
-    /* left: 1130px; */
-    /* right: 0;
-    top: -10px; */
     border: 1px solid #3f70ff;
     border-radius: 50%;
     background: #e8f1ff;
