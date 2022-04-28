@@ -98,7 +98,9 @@ export default {
     display: flex;
     flex-direction: column;
     /* width: 1180px; */
+    width: 84%;
     margin: 0 20px;
+    margin: 0 auto;
 }
 
 .hr {
@@ -115,7 +117,7 @@ export default {
 .list__group-title {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
     align-items: center;
     justify-content: space-between;
     font-family: "Nunito", sans-serif;

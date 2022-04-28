@@ -59,13 +59,13 @@ export default {
 }
 .calc-wrapper {
     display: flex;
+    height: 100%;
     flex-direction: column;
     background: rgba(202, 198, 198, 0.67);
     backdrop-filter: blur(15px);
 }
 
 .calc-main {
-    min-height: 1300px;
     display: flex;
     flex-direction: column;
     padding: 0 20px;
