@@ -1,60 +1,52 @@
 <template>
     <div class="job-wrapper">
-        <hr class="hr" />
-        <div class="list__group">
-            <div class="list__group-title">
-                <div class="list__group-title_text">
-                    Двигатель внутреннего сгорания (ДВС и КПП)
-                </div>
-                <div
-                    class="groupBtn"
-                    :class="isShowGroup1 ? 'activeShow' : ''"
-                    @click="openGroup1"
-                ></div>
-            </div>
-            <div v-for="(jobItem, idx) in arrayMotor" :key="idx">
-                <div class="list__item" v-if="isShowGroup1">
-                    <div class="list__item-text">
-                        <label>
-                            <input
-                                type="checkbox"
-                                :value="jobItem"
-                                v-model="chosenJobsArray"
-                            />
-                            <span class="labelInput">{{ jobItem.type }}</span>
-                        </label>
+        <div class="job-container">
+            <div class="job-container__list">
+                <hr class="hr" />
+                <div class="list__group">
+                    <div class="list__group-title">
+                        <div class="list__group-title_text">
+                            Двигатель внутреннего сгорания (ДВС и КПП)
+                        </div>
+                        <div class="groupBtn" :class="isShowGroup1 ? 'activeShow' : ''" @click="openGroup1"></div>
+                    </div>
+                    <div v-for="(jobItem, idx) in arrayMotor" :key="idx">
+                        <div class="list__item" v-if="isShowGroup1">
+                            <div class="list__item-text">
+                                <label>
+                                    <input type="checkbox" :value="jobItem" v-model="chosenJobsArray" />
+                                    <span class="labelInput">{{
+                                            jobItem.type
+                                    }}</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <hr class="hr" />
-        <div class="list__group">
-            <div class="list__group-title">
-                Ходовая часть
-                <div
-                    class="groupBtn"
-                    :class="isShowGroup2 ? 'activeShow' : ''"
-                    @click="openGroup2"
-                ></div>
-            </div>
-            <div v-for="(jobItem, idx) in arrayWheels" :key="idx">
-                <div class="list__item" v-if="isShowGroup2">
-                    <div class="list__item_text">
-                        <label>
-                            <input
-                                type="checkbox"
-                                :value="jobItem"
-                                v-model="chosenJobsArray"
-                            />
-                            <span class="labelInput">{{ jobItem.type }}</span>
-                        </label>
+                <hr class="hr" />
+                <div class="list__group">
+                    <div class="list__group-title">
+                        Ходовая часть
+                        <div class="groupBtn" :class="isShowGroup2 ? 'activeShow' : ''" @click="openGroup2"></div>
+                    </div>
+                    <div v-for="(jobItem, idx) in arrayWheels" :key="idx">
+                        <div class="list__item" v-if="isShowGroup2">
+                            <div class="list__item_text">
+                                <label>
+                                    <input type="checkbox" :value="jobItem" v-model="chosenJobsArray" />
+                                    <span class="labelInput">{{
+                                            jobItem.type
+                                    }}</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <hr class="hr" />
             </div>
-        </div>
-        <hr class="hr" />
-        <div class="btn">
-            <button class="calcBtn">Рассчитать стоимость</button>
+            <div class="btn">
+                <button class="calcBtn">Рассчитать стоимость</button>
+            </div>
         </div>
     </div>
 </template>
@@ -95,10 +87,18 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap");
 
 .job-wrapper {
+
+
+}
+
+.job-container {
+
+    margin: 0 auto 50px auto;
+}
+
+.job-container__list {
     display: flex;
     flex-direction: column;
-    /* width: 1180px; */
-    margin: 0 20px;
 }
 
 .hr {
@@ -110,12 +110,11 @@ export default {
 .list__group {
     display: flex;
     flex-direction: column;
+
 }
 
 .list__group-title {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     font-family: "Nunito", sans-serif;
@@ -125,10 +124,10 @@ export default {
     line-height: 30px;
     letter-spacing: -0.02em;
     color: #0e0f11;
+
 }
 
 .list__group-title_text {
-    display: flex;
 }
 
 .groupBtn {

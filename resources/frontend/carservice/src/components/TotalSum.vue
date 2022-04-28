@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <div class="container__sum">
-            <span class="container__sum_text">Примерная стоимость работ</span>
-            <span class="container__sum_totalSum">5000 p.</span>
-        </div>
+    <div class="container__sum">
+        <span class="container__sum_text">Примерная стоимость работ</span>
+        <span class="container__sum_totalSum">5000 p.</span>
     </div>
 </template>
 <script>
@@ -27,7 +25,6 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
     width: 296px;
     height: 100%;
     background-color: transparent;
@@ -38,12 +35,13 @@ export default {
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
-    line-height: 30px;
+    line-height: 64px;
     text-align: center;
     color: #000000;
 }
 
 .container__sum_text {
+    height: 100%;
     font-family: "Nunito", sans-serif;
     font-style: normal;
     font-weight: 600;

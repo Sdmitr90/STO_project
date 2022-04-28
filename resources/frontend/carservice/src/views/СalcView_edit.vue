@@ -1,12 +1,11 @@
 <template>
-    <div class="flex-cont">
-        <div class="calc-wrapper">
-            <div class="h2-calc">Выберите услугу</div>
-            <div class="calc-main">
-                <v-job-list :isShowGroup1="isShowGroup1" :isShowGroup2="isShowGroup2" :arrayMotor="arrayMotor"
-                    :arrayWheels="arrayWheels" :openGroup1="openGroup1" :openGroup2="openGroup2"></v-job-list>
-                <v-total-sum></v-total-sum>
-            </div>
+    <div class="calc-wrapper">
+        <div class="h2-calc">Выберите услугу</div>
+        <div class="calc-main">
+
+            <v-job-list :isShowGroup1="isShowGroup1" :isShowGroup2="isShowGroup2" :arrayMotor="arrayMotor"
+                :arrayWheels="arrayWheels" :openGroup1="openGroup1" :openGroup2="openGroup2"></v-job-list>
+            <v-total-sum></v-total-sum>
         </div>
     </div>
 </template>
@@ -53,23 +52,18 @@ export default {
 <style lang="css" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap");
 
-.flex-cont {
-    width: 76%;
-    margin: 0 auto;
-}
 .calc-wrapper {
-    display: flex;
-    flex-direction: column;
+    max-width: 1440px;
+    margin: 0 auto;
     background: rgba(202, 198, 198, 0.67);
     backdrop-filter: blur(15px);
 }
 
 .calc-main {
-    min-height: 1300px;
     display: flex;
     flex-direction: column;
+    width: 100%;
     padding: 0 20px;
-    margin-bottom: 50px;
 }
 
 .h2-calc {
