@@ -1,5 +1,5 @@
 <template>
-    <div class="job-wrapper">
+    <form @submit.prevent="calculateJob" class="job-wrapper">
         <hr class="hr" />
         <div class="list__group">
             <div class="list__group-title">
@@ -21,7 +21,7 @@
                                 :value="jobItem"
                                 v-model="chosenJobsArray"
                             />
-                            <span class="labelInput">{{ jobItem.type }}</span>
+                            <span class="labelInput">{{ jobItem }}</span>
                         </label>
                     </div>
                 </div>
@@ -39,14 +39,14 @@
             </div>
             <div v-for="(jobItem, idx) in arrayWheels" :key="idx">
                 <div class="list__item" v-if="isShowGroup2">
-                    <div class="list__item_text">
+                    <div class="list__item-text">
                         <label>
                             <input
                                 type="checkbox"
                                 :value="jobItem"
                                 v-model="chosenJobsArray"
                             />
-                            <span class="labelInput">{{ jobItem.type }}</span>
+                            <span class="labelInput">{{ jobItem }}</span>
                         </label>
                     </div>
                 </div>
@@ -54,9 +54,9 @@
         </div>
         <hr class="hr" />
         <div class="btn">
-            <button class="calcBtn">Рассчитать стоимость</button>
+            <button type="submit" class="calcBtn">Рассчитать стоимость</button>
         </div>
-    </div>
+    </form>
 </template>
 <script>
 export default {
@@ -87,6 +87,21 @@ export default {
         openGroup2: {
             type: Function,
             required: true,
+        },
+    },
+    data() {
+        return {
+            chosenJobsArray: [],
+        };
+    },
+    methods: {
+        calculateJob() {
+            if (this.chosenJobsArray.length) {
+                console.log("chosenJobsArray", this.chosenJobsArray);
+                alert("Запрос на сервер по списку работ отправлен:");
+            } else {
+                alert("Работы не выбраны");
+            }
         },
     },
 };
@@ -210,6 +225,18 @@ input[type="checkbox"]:checked {
     font-size: 22px;
     line-height: 30px;
     text-align: center;
+    color: #000000;
+}
+
+.calcBtn:hover {
+    cursor: pointer;
+    background: #ad2800;
+    color: #fff;
+}
+
+.calcBtn:active {
+    cursor: pointer;
+    background: #ff6433;
     color: #000000;
 }
 </style>

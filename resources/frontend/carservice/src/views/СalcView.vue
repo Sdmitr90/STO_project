@@ -3,8 +3,14 @@
         <div class="calc-wrapper">
             <div class="h2-calc">Выберите услугу</div>
             <div class="calc-main">
-                <v-job-list :isShowGroup1="isShowGroup1" :isShowGroup2="isShowGroup2" :arrayMotor="arrayMotor"
-                    :arrayWheels="arrayWheels" :openGroup1="openGroup1" :openGroup2="openGroup2"></v-job-list>
+                <v-job-list-form
+                    :isShowGroup1="isShowGroup1"
+                    :isShowGroup2="isShowGroup2"
+                    :arrayMotor="arrayMotor"
+                    :arrayWheels="arrayWheels"
+                    :openGroup1="openGroup1"
+                    :openGroup2="openGroup2"
+                ></v-job-list-form>
                 <v-total-sum></v-total-sum>
             </div>
         </div>
@@ -12,28 +18,28 @@
 </template>
 <script>
 import TotalSum from "../components/TotalSum.vue";
-import JobList from "../components/JobList.vue";
+import JobListForm from "../components/JobListForm.vue";
 
 export default {
     components: {
         "v-total-sum": TotalSum,
-        "v-job-list": JobList,
+        "v-job-list-form": JobListForm,
     },
     data() {
         return {
             isShowGroup1: true,
             isShowGroup2: false,
             arrayMotor: [
-                { type: "Замена масла ВДС с фильтром", money: 1125 },
-                { type: "Замена воздушного фильтра", money: 1320 },
-                { type: "Замена свечей  зажигания", money: 1520 },
-                { type: "Замена масла КПП", money: 1020 },
+                "Замена масла ВДС с фильтром",
+                "Замена воздушного фильтра",
+                "Замена свечей  зажигания",
+                "Замена масла КПП",
             ],
             arrayWheels: [
-                { type: "Замена тормозных колодок", money: 1125 },
-                { type: "Замена тормозной жидкости", money: 1320 },
-                { type: "Замена аммортизаторов", money: 1520 },
-                { type: "Замена ручного тормоза", money: 1020 },
+                "Замена тормозных колодок",
+                "Замена тормозной жидкости",
+                "Замена аммортизаторов",
+                "Замена ручного тормоза",
             ],
             chosenJobsArray: [],
         };
