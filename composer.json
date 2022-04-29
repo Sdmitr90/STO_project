@@ -20,7 +20,7 @@
         "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.0",
+        "laravel/ui": "^3.4",
         "livewire/livewire": "^2.10",
         "mews/purifier": "^3.2",
         "overtrue/laravel-lang": "~5.0",
