@@ -112,3 +112,6 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.'], function () {
 
     Route::resource('services', AdminServiceController::class);
 });
+
+Route::get('/TechServiceType', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
+Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index']);

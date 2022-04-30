@@ -6,12 +6,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\Mixed_;
 
+/**
+ * @OA\Schema(
+ *     title="TechServiceType",
+ *     description="TechServiceType model",
+ *     @OA\Xml(
+ *         name="TechServiceType"
+ *     )
+ * )
+ */
+
 class TechServiceType extends Model
 {
     use HasFactory;
     protected $table = 'tech_service_types';
 
-    public function getCategories(): array {
+    /**
+     * @OA\Property(
+     *      title="TechServiceType",
+     *      description="Список категорий сервисов",
+     *      example="[{id: 1, title: ДВС&Трансмиссия},...,{}]"
+     * )
+     *
+     * @var object
+     */
+
+    public function getCategories() {
         return \DB::select("select id, title from {$this->table}");
     }
 

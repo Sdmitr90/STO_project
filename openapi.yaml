@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: 'OpenApi Documentation'
+  description: 'Документация для авто-сервиса'
+  version: 1.0.0
+paths:
+  /Services/:
+    get:
+      tags:
+        - Services
+      summary: 'Получить список всех доступных сервисов'
+      description: 'Получаем список всех доступных сервисов'
+      operationId: getServices
+      parameters:
+        -
+          name: tags
+          in: query
+          description: 'Параметры с Get, для этого запроса пока не принимаются на бэке, это образец'
+          required: false
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: 'successful operation'
+        '401':
+          description: Unauthenticated
+        '403':
+          description: Forbidden
+  /TechServiceType/:
+    get:
+      tags:
+        - TechServiceType
+      summary: 'Получить список всех доступных категорий сервисов'
+      description: 'Получаем список всех доступных категорий сервисов'
+      operationId: getTechServiceType
+      parameters:
+        -
+          name: tags
+          in: query
+          description: 'Параметры с Get, для этого запроса пока не принимаются на бэке, это образец'
+          required: false
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: 'successful operation'
+        '401':
+          description: Unauthenticated
+        '403':
+          description: Forbidden
