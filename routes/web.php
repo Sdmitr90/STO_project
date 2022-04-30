@@ -15,6 +15,9 @@ use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 
 //Route::get('/', function () {
 //    return redirect()->route('index');
@@ -96,3 +99,19 @@ Route::group(['middleware' => 'auth'], function () {
         return "Cache is cleared";
     })->name('clear.cache');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'admin', 'as'=>'admin.'], function () {
+    Route::get('/', AdminController::class)->name('index');
+//Довать 'middleware' => 'is_admin' в группу админки после авторизации
+
+
+    Route::resource('tech_service', AdminCategoryController::class);
+
+    Route::resource('services', AdminServiceController::class);
+});
+
+Route::get('/TechServiceType', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
+Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index']);
