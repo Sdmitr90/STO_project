@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CalculatorController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Session;
@@ -21,9 +22,12 @@ use App\Http\Controllers\LeadController;
 //})->name('/');
 
 //Route::get('/', [HomeController::class, 'index'])->name('main');
-Route::get('/', function () {
-    return view('welcome');
-})->name('main');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('main');
+
+Route::get('/calculate', [CalculatorController::class, 'calculate'])
+    ->name('calculate');
 
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
