@@ -12,13 +12,24 @@
                         </h3>
                     </div>
                     <div class="wrapper__work__name" v-show="valueType.show" v-for="valueName in nameOfTheWork" :key="valueName.nameOfTheWork">
-                        <p class="wrapper__work__name__item" v-if="valueType.id === valueName.types">
-                            <input class="wrapper__work__name__item__box" type="checkbox">
-                            {{valueName.title}}
-                        </p>
+                        <div class="wrapper__work__name__item" v-if="valueType.id === valueName.types">
+                            <label>
+                                <input type="checkbox" class="wrapper__work__name__item__box">
+                                {{valueName.title}}
+                            </label>
+                        </div>
                     </div>
                 </div>
+                <div class="wrapper__btn">
+                    ЗАПИСАТЬСЯ
+                </div>
             </form>
+            <div class="wrapper__cost">
+                <p>Примерная стоимость работ</p>
+                <div class="wrapper__cost__coin">
+                    5000 р
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -56,6 +67,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+form {
+    max-width: 1180px;
+    margin: 0 auto;
+    border-top: 1px solid #584C4C;
+}
+
 .wrapper {
     max-width: 1440px;
     min-height: 723px;
@@ -74,7 +91,7 @@ export default {
         color: #222222;
     }
     &__work {
-        border-top: 1px solid #584C4C;
+        border-bottom: 1px solid #584C4C;
         &__type {
             margin-top: 34px;
             margin-bottom: 34px;
@@ -85,16 +102,55 @@ export default {
             }
         }
         &__name {
-            p {
+            &__item {
+                margin-top: 19px;
+                margin-bottom: 19px;
+                margin-left: 53px;
                 font-weight: 400;
                 font-size: 18px;
             }
         }
     }
-}
-form {
-    max-width: 1180px;
-    margin: 0 auto;
-    border-bottom: 1px solid #584C4C;
+    &__btn {
+        width: 296px;
+        height: 64px;
+        margin: 40px auto 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        background-color: #FF6433;
+        border-radius: 16px;
+        border: 1px solid #FF6433;
+        font-weight: 400;
+        font-size: 22px;
+        cursor: pointer;
+    }
+    &__cost {
+        margin-top: 40px;
+        padding-bottom: 200px;
+        display: flex;
+        justify-content: space-around;
+        p {
+            font-size: 28px;
+            line-height: 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        &__coin {
+            width: 296px;
+            height: 64px;
+            font-weight: 400;
+            font-size: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid #000000;
+            border-radius: 16px;
+        }
+    }
 }
 </style>
