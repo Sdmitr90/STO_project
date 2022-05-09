@@ -3,19 +3,37 @@
         <div class="wrapper">
             <h2>Выберите услугу</h2>
             <form>
-                <div class="wrapper__work" v-for="valueType in typeOfWork" :key="valueType.typeOfWork">
+                <div
+                    class="wrapper__work"
+                    v-for="valueType in typeOfWork"
+                    :key="valueType.typeOfWork"
+                    @click="valueType.show = !valueType.show"
+                >
                     <div class="wrapper__work__type">
                         <h3>
                             {{ valueType.title }}
                         </h3>
-                        <div class="groupBtn" :class="valueType.show ? 'activeShow' : ''"
-                            @click="valueType.show = !valueType.show"></div>
+                        <div
+                            class="groupBtn"
+                            :class="valueType.show ? 'activeShow' : ''"
+
+                        ></div>
                     </div>
-                    <div class="wrapper__work__name" v-show="valueType.show" v-for="valueName in nameOfTheWork"
-                        :key="valueName.nameOfTheWork">
-                        <div class="wrapper__work__name__item" v-if="valueType.id === valueName.types">
+                    <div
+                        class="wrapper__work__name"
+                        v-show="valueType.show"
+                        v-for="valueName in nameOfTheWork"
+                        :key="valueName.nameOfTheWork"
+                    >
+                        <div
+                            class="wrapper__work__name__item"
+                            v-if="valueType.id === valueName.types"
+                        >
                             <label>
-                                <input type="checkbox" class="wrapper__work__name__item__box" />
+                                <input
+                                    type="checkbox"
+                                    class="wrapper__work__name__item__box"
+                                />
                                 {{ valueName.title }}
                             </label>
                         </div>
