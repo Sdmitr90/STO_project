@@ -16,7 +16,6 @@
                         <div
                             class="groupBtn"
                             :class="valueType.show ? 'activeShow' : ''"
-
                         ></div>
                     </div>
                     <div
