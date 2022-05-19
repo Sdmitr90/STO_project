@@ -67,6 +67,6 @@ class TechServiceTypeController extends Controller
     public function servicesTypeId($id)
     {
         $ServiceType = app(TechServiceType::class);
-        return  $ServiceType->getCategoryById($id) ;
+        return  $ServiceType->getServicesByCategoryId($id) ;
     }
 }

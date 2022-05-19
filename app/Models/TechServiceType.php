@@ -20,7 +20,7 @@ class TechServiceType extends Model
 {
     use HasFactory;
     protected $table = 'tech_service_types';
-
+    protected $table_services = 'services';
     /**
      * @OA\Property(
      *      title="TechServiceType",
@@ -37,6 +37,11 @@ class TechServiceType extends Model
     public function getCategoryById(int $id) {
         return \DB::selectOne("select id, title from {$this->table} where
                     id = :id", ['id' => $id]);
+    }
+
+    public function getServicesByCategoryId(int $id) {
+        return \DB::select("select id, title from {$this->table_services} where
+                    types = :id", ['id' => $id]);
     }
 
 
