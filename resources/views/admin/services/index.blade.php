@@ -23,7 +23,7 @@
 
                 <td>{{$service->title}}</td>
                 <td>{{$service->coefficient}}</td>
-                <td>{{$service->tech_service_types_id}}</td>
+                <td>{{$service->types}}</td>
                 <td>
                     <a href="#">Редактирование</a>
                     <a href="javascript:;">Удаление</a>
