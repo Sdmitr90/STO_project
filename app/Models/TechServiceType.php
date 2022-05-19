@@ -30,13 +30,11 @@ class TechServiceType extends Model
      *
      * @var object
      */
-
     public function getCategories() {
         return \DB::select("select id, title from {$this->table}");
     }
 
     public function getCategoryById(int $id) {
-
         return \DB::selectOne("select id, title from {$this->table} where
                     id = :id", ['id' => $id]);
     }
