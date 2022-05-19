@@ -2,9 +2,7 @@
     <section class="top">
         <div class="header container">
             <div class="header__logo">
-                <a href="/">
-                    <img src="../assets/logo.svg" alt="logo"
-                    /></a>
+                <a href="/"> <img src="../assets/logo.svg" alt="logo" /></a>
             </div>
             <nav class="header__nav">
                 <RouterLink to="/">Главная</RouterLink>
@@ -13,16 +11,15 @@
                 <RouterLink to="to/contacts">Контакты</RouterLink>
             </nav>
             <div class="header__call">
-                <a href="tel:+79123456789">
-                    <img src="../assets/images/call.png" alt="call">
-                </a>
+                <RouterLink to="/login">
+                    <img src="../assets/images/call.png" alt="call" />
+                </RouterLink>
             </div>
         </div>
     </section>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style scoped lang="scss">
 .header {
@@ -37,7 +34,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-     }
+    }
     &__nav {
         display: flex;
         a {
@@ -52,7 +49,7 @@
             &.router-link-exact-active {
                 border-radius: 16px;
                 color: #ffffff;
-                background: #FF6433;
+                background: #ff6433;
             }
         }
     }
@@ -63,4 +60,3 @@
     }
 }
 </style>
-

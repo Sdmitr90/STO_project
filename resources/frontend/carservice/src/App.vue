@@ -8,15 +8,27 @@
     </div>
 </template>
 
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import Header from "@/components/Header.vue"
-import Footer from "@/components/Footer.vue"
+<script>
+import { RouterLink, RouterView } from "vue-router";
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+
+export default {
+    components: {
+        Header,
+        Footer,
+    },
+};
 </script>
 
 <style scoped lang="scss">
 .global-wrapper {
-    background: linear-gradient(to top left, rgba(255, 100, 51, 0.3), rgba(33, 22, 22, 0)), url("assets/images/pexels-mike-190574.jpg");
+    background: linear-gradient(
+            to top left,
+            rgba(255, 100, 51, 0.3),
+            rgba(33, 22, 22, 0)
+        ),
+        url("assets/images/pexels-mike-190574.jpg");
     //height: 100vh;
     min-height: 100vh;
     max-width: 1920px;
