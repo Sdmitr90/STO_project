@@ -6,8 +6,8 @@
             </h2>
             <form>
                 <div class="wrapper__work" v-for="valueType in typeOfWork" :key="valueType.typeOfWork">
-                    <div class="wrapper__work__type" v-on:click="valueType.show = !valueType.show">
-                        <h3>
+                    <div class="wrapper__work__type" @click="valueType.show = !valueType.show">
+                        <h3 @click="createdNameOfTheWork">
                             {{ valueType.title }}
                         </h3>
                     </div>
@@ -15,7 +15,7 @@
                         <div class="wrapper__work__name__item" v-if="valueType.id === valueName.types">
                             <label>
                                 <input type="checkbox" class="wrapper__work__name__item__box">
-                                {{valueName.title}}
+                                {{ valueName.title }}
                             </label>
                         </div>
                     </div>
@@ -54,14 +54,20 @@ export default {
             .catch(error => {
                 this.errors.push(error)
             })
-        axios
-            .get('http://localhost:3000/src/api_in/response_1651338166371.json')
-            .then(responce => {
-                this.nameOfTheWork = responce.data
-            })
-            .catch(error => {
-                this.errors.push(error)
-            })
+    },
+    methods: {
+        async createdNameOfTheWork() {
+            try {
+                const response = await axios
+                    .get('http://localhost:3000/src/api_in/response_1651338166371.json')
+                    .then(responce => {
+                        this.nameOfTheWork = responce.data
+                        console.log(response);
+                    })
+            } catch (error) {
+                this.errors.push(error);
+            }
+        }
     }
 }
 </script>
