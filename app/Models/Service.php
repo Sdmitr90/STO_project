@@ -32,6 +32,6 @@ class Service extends Model
 
     public function getServices(): array {
 
-        return \DB::select("select title, coefficient, tech_service_types_id from {$this->table}");
+        return \DB::select("select title, coefficient, types from {$this->table}");
     }
 }

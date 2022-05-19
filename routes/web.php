@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CalculatorController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Session;
@@ -24,9 +25,12 @@ use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 //})->name('/');
 
 //Route::get('/', [HomeController::class, 'index'])->name('main');
-Route::get('/', function () {
-    return view('welcome');
-})->name('main');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('main');
+
+Route::get('/calculate', [CalculatorController::class, 'calculate'])
+    ->name('calculate');
 
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -113,5 +117,24 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.'], function () {
     Route::resource('services', AdminServiceController::class);
 });
 
-Route::get('/TechServiceType', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
+//Route::get('/TechServiceType', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
 Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index']);
+
+Route::group([
+    'prefix' => 'TechServiceType'
+], function () {
+    Route::get('', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
+
+    Route::get('/{id}', [\App\Http\Controllers\TechServiceTypeController::class, 'servicesTypeId'])
+        ->where('id', '[0-9]+')
+        ->name("TechServiceType::servicesTypeId");
+
+    Route::get('create', [\App\Http\Controllers\TechServiceTypeController::class, 'create'])
+        ->name("create");
+
+    Route::get('update', [\App\Http\Controllers\TechServiceTypeController::class, 'update'])
+        ->name("update");
+
+    Route::get('delete', [\App\Http\Controllers\TechServiceTypeController::class, 'delete'])
+        ->name("delete");
+});

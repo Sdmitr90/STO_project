@@ -55,5 +55,8 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::get('/permission/{id}', [PermissionController::class,'show']);
         Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
     });
-
 });
+
+
+Route::get('/TechServiceType', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
+Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index']);

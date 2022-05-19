@@ -6,23 +6,49 @@ use App\Models\TechServiceType;
 
 class TechServiceTypeController extends Controller
 {
+
     /**
      * * @OA\Get(
-     *      path="/TechServiceType/",
-     *      operationId="getTechServiceType",
+     *      path="/TechServiceType",
+     *      operationId="index",
      *      tags={"TechServiceType"},
      *      summary="Получить список всех доступных категорий сервисов",
      *      description="Получаем список всех доступных категорий сервисов",
+     *     @OA\Response(
+     *         response=200,
+     *          description="successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+    public function index()
+    {
+        $ServiceType = app(TechServiceType::class);
+        return  $ServiceType->getCategories() ;
+    }
+
+    /**
+     * * @OA\Get(
+     *      path="/TechServiceType/{id}",
+     *      operationId="servicesTypeId",
+     *      tags={"TechServiceType by id"},
+     *      summary="Получить список сервисов выбранной категории",
+     *      description="Получаем список сервисов выбранной категории",
      *     @OA\Parameter(
-     *         name="tags",
-     *         in="query",
-     *         description="Параметры с Get, для этого запроса пока не принимаются на бэке, это образец",
-     *         required=false,
+     *         name="id",
+     *         in="path",
+     *         description="введите id необходимой категории",
+     *         required=true,
      *         @OA\Schema(
-     *             type="array",
-     *             @OA\Items(type="string"),
+     *             type="integer",
      *         ),
-     *         style="form"
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -38,10 +64,9 @@ class TechServiceTypeController extends Controller
      *      )
      *     )
      */
-
-    public function index()
+    public function servicesTypeId($id)
     {
         $ServiceType = app(TechServiceType::class);
-        return  $ServiceType->getCategories() ;
+        return  $ServiceType->getCategoryById($id) ;
     }
 }
