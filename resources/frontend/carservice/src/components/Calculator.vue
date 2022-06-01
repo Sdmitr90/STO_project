@@ -6,36 +6,32 @@
             </h2>
             <form>
                 <div class="wrapper__work" v-for="valueType in typeOfWork" :key="valueType.typeOfWork">
-                    <div class="wrapper__work__type" @click="valueType.show = !valueType.show">
-                        <h3 @click="createdNameOfTheWork">
-                            {{ valueType.title }}
-                        </h3>
-                    </div>
+                    <h3 class="wrapper__work__type" @click="valueType.show = !valueType.show, createdNameOfTheWork(valueType.id)">
+                        {{ valueType.title }}
+                    </h3>
                     <div class="wrapper__work__name" v-show="valueType.show" v-for="valueName in nameOfTheWork" :key="valueName.nameOfTheWork">
-                        <div class="wrapper__work__name__item" v-if="valueType.id === valueName.types">
-                            <label>
-                                <input type="checkbox" class="wrapper__work__name__item__box">
-                                {{ valueName.title }}
-                            </label>
-                        </div>
+                        <label class="wrapper__work__name__item" v-if="valueType.id === valueName.types">
+                            <input type="checkbox" class="wrapper__work__name__item__box" v-model="idCheckedNames" :value="valueName.id">
+                            {{ valueName.title }}
+                        </label>
                     </div>
                 </div>
-                <div class="wrapper__btn">
+                <div class="wrapper__btn" @click="createdCheckedNames">
                     ЗАПИСАТЬСЯ
                 </div>
             </form>
             <div class="wrapper__cost">
                 <p>Примерная стоимость работ</p>
                 <div class="wrapper__cost__coin">
-                    5000 р
+                    {{ totalPrice }} руб.
                 </div>
             </div>
         </div>
     </section>
 </template>
-
 <script>
 import axios from 'axios'
+
 export default {
     name: "Calculator",
     data() {
@@ -43,11 +39,13 @@ export default {
             typeOfWork: [],
             nameOfTheWork: [],
             errors: [],
+            idCheckedNames: [], //потом сделать функцию аксиос и передавать массив в нее для отправки
+            totalPrice: 0
         }
     },
     created() {
         axios
-            .get('http://localhost:3000/src/api_in/response_1651338166383.json')
+            .get('http://sto/TechServiceType')
             .then(responce => {
                 this.typeOfWork = responce.data
             })
@@ -56,13 +54,26 @@ export default {
             })
     },
     methods: {
-        async createdNameOfTheWork() {
+        async createdNameOfTheWork(idType) {
             try {
                 const response = await axios
-                    .get('http://localhost:3000/src/api_in/response_1651338166371.json')
+                    .get('http://sto/TechServiceType/' + idType)
                     .then(responce => {
                         this.nameOfTheWork = responce.data
-                        console.log(response);
+                    })
+            } catch (error) {
+                this.errors.push(error);
+            }
+        },
+        async createdCheckedNames() {
+            try {
+                const response = await axios
+                    .post('http://sto/calculate', {
+                        id: this.idCheckedNames
+                    })
+                    .then(responce => {
+                        this.totalPrice = responce.data
+                        console.log(response)
                     })
             } catch (error) {
                 this.errors.push(error);
@@ -108,13 +119,11 @@ form {
             }
         }
         &__name {
-            &__item {
-                margin-top: 19px;
-                margin-bottom: 19px;
-                margin-left: 53px;
-                font-weight: 400;
-                font-size: 18px;
-            }
+            margin-top: 19px;
+            margin-bottom: 19px;
+            margin-left: 53px;
+            font-weight: 400;
+            font-size: 18px;
         }
     }
     &__btn {

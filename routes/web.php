@@ -29,8 +29,11 @@ use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 //     return view('welcome');
 // })->name('main');
 
-Route::get('/calculate', [CalculatorController::class, 'calculate'])
-    ->name('calculate');
+Route::get('/calculateExample', [CalculatorController::class, 'index']);
+
+Route::post('/calculate', [CalculatorController::class, 'calculate'])
+    ->name("calculate");
+//    ->middleware ('cors');
 
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -117,7 +120,6 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.'], function () {
     Route::resource('services', AdminServiceController::class);
 });
 
-//Route::get('/TechServiceType', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
 Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index']);
 
 Route::group([

@@ -4,46 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\Calculator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB as FacadesDB;
+
 
 class CalculatorController extends Controller
 {
-//    public $norm = Calculator::HOURLY_RATE;
-
-   public function calculate (Request $request) 
-   {
-
-    // Вместо 'titles' нужно вписать название массива, 
-    // который будет отправляться с фронта:
-    // $serviceNames = $request->input('titles');
-
-    $services = [
-        [
-            'title' => "Замена масла ДВС с фильтром",
-        ],
-        [
-            'title' => "Замена воздушного фильтра ДВС",  
-        ],
-        [
-            'title' => "Замена свечей зажигания",
-        ],
-    ];
-    
-    $result = 0;
-
-    foreach ($services as $service)
+    /**
+     * *@OA\Post(
+     *     path="/calculate",
+     *     tags={"calculate"},
+     *     operationId="servicesId",
+     *     summary="calculate all services to the coefficients",
+     *     @OA\RequestBody(
+     *         description="введите id необходимых сервисов, Response в первой строке, в самом начале(посчитанная сумма), остальное - Debugger, если включен",
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="id",
+     *                     type="integer"
+     *                 ),
+     *                 example={"id":{1,3,4}},
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+    public function calculate(Request $request)
     {
+        $services = $request->input('id');
+        $calculatePrice = app(Calculator::class);
+        return $calculatePrice->getCalculate($services);
 
-        $coefficient= FacadesDB::table('services')->where('title', $service['title'])
-                                                    ->value('coefficient');
-        $price = Calculator::HOURLY_RATE * $coefficient;
-        $result += $price;
     }
 
-    // Для проверки калькулятора:
-    // return view('calculate', ['result' => $result]);
-
-    return $result;
-
-   }
+    public function index(){
+        return view('calculate');
+    }
 }

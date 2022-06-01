@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalculatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -57,6 +58,3 @@ Route::group(['middleware' => 'auth:api'], function(){
     });
 });
 
-
-Route::get('/TechServiceType', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
-Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index']);
