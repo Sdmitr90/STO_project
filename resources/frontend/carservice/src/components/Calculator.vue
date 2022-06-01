@@ -7,12 +7,16 @@
             <form>
                 <div class="wrapper__work" v-for="valueType in typeOfWork" :key="valueType.typeOfWork">
                     <h3 class="wrapper__work__type" @click="valueType.show = !valueType.show, createdNameOfTheWork(valueType.id)">
+
                         {{ valueType.title }}
+
                     </h3>
                     <div class="wrapper__work__name" v-show="valueType.show" v-for="valueName in nameOfTheWork" :key="valueName.nameOfTheWork">
                         <label class="wrapper__work__name__item" v-if="valueType.id === valueName.types">
                             <input type="checkbox" class="wrapper__work__name__item__box" v-model="idCheckedNames" :value="valueName.id">
+
                             {{ valueName.title }}
+
                         </label>
                     </div>
                 </div>
@@ -39,8 +43,10 @@ export default {
             typeOfWork: [],
             nameOfTheWork: [],
             errors: [],
+
             idCheckedNames: [], //потом сделать функцию аксиос и передавать массив в нее для отправки
             totalPrice: 0
+
         }
     },
     created() {
@@ -57,6 +63,7 @@ export default {
         async createdNameOfTheWork(idType) {
             try {
                 const response = await axios
+
                     .get('http://sto/TechServiceType/' + idType)
                     .then(responce => {
                         this.nameOfTheWork = responce.data
@@ -74,6 +81,7 @@ export default {
                     .then(responce => {
                         this.totalPrice = responce.data
                         console.log(response)
+
                     })
             } catch (error) {
                 this.errors.push(error);
