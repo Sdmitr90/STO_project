@@ -6,6 +6,43 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/calculate": {
+            "post": {
+                "tags": [
+                    "calculate"
+                ],
+                "summary": "calculate all services to the coefficients",
+                "operationId": "servicesId",
+                "requestBody": {
+                    "description": "введите id необходимых сервисов, Response в первой строке, в самом начале(посчитанная сумма), остальное - Debugger, если включен",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": [
+                                        1,
+                                        3,
+                                        4
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
         "/Services/": {
             "get": {
                 "tags": [
@@ -98,6 +135,13 @@
     },
     "components": {
         "schemas": {
+            "Calculator": {
+                "title": "getCalculate",
+                "description": "calculate all services to the coefficients",
+                "xml": {
+                    "name": "Calculate"
+                }
+            },
             "Service": {
                 "title": "Services",
                 "description": "Services model",
