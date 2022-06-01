@@ -40,7 +40,7 @@ class TechServiceType extends Model
     }
 
     public function getServicesByCategoryId(int $id) {
-        return \DB::select("select id, title from {$this->table_services} where
+        return \DB::select("select id, title, types from {$this->table_services} where
                     types = :id", ['id' => $id]);
     }
 
