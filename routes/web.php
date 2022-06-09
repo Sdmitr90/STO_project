@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CalculatorController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Session;
@@ -15,15 +16,24 @@ use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 
 //Route::get('/', function () {
 //    return redirect()->route('index');
 //})->name('/');
 
 //Route::get('/', [HomeController::class, 'index'])->name('main');
-Route::get('/', function () {
-    return view('welcome');
-})->name('main');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('main');
+
+Route::get('/calculateExample', [CalculatorController::class, 'index']);
+
+Route::post('/calculate', [CalculatorController::class, 'calculate'])
+    ->name("calculate");
+//    ->middleware ('cors');
 
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -95,4 +105,38 @@ Route::group(['middleware' => 'auth'], function () {
         Artisan::call('route:clear');
         return "Cache is cleared";
     })->name('clear.cache');
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'admin', 'as'=>'admin.'], function () {
+    Route::get('/', AdminController::class)->name('index');
+//Довать 'middleware' => 'is_admin' в группу админки после авторизации
+
+
+    Route::resource('tech_service', AdminCategoryController::class);
+
+    Route::resource('services', AdminServiceController::class);
+});
+
+Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index']);
+
+Route::group([
+    'prefix' => 'TechServiceType'
+], function () {
+    Route::get('', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
+
+    Route::get('/{id}', [\App\Http\Controllers\TechServiceTypeController::class, 'servicesTypeId'])
+        ->where('id', '[0-9]+')
+        ->name("TechServiceType::servicesTypeId");
+
+    Route::get('create', [\App\Http\Controllers\TechServiceTypeController::class, 'create'])
+        ->name("create");
+
+    Route::get('update', [\App\Http\Controllers\TechServiceTypeController::class, 'update'])
+        ->name("update");
+
+    Route::get('delete', [\App\Http\Controllers\TechServiceTypeController::class, 'delete'])
+        ->name("delete");
 });

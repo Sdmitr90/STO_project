@@ -35,7 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+//            \App\Http\Middleware\VerifyCsrfToken::class, костыль
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
           //  \App\Http\Middleware\Localization::class,
         ],
@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'cors' => \App\Http\Middleware\Cors::class,
     ];
 }

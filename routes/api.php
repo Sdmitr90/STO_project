@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalculatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -55,5 +56,5 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::get('/permission/{id}', [PermissionController::class,'show']);
         Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
     });
-
 });
+

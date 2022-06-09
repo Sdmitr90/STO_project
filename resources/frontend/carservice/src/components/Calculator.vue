@@ -42,6 +42,7 @@
 </template>
 <script>
 import axios from 'axios'
+
 import RecordForm from "./RecordForm.vue";
 
 export default {
@@ -53,10 +54,16 @@ export default {
             nameOfTheWork: [],
             errors: [],
 
+
             idCheckedNames: [],
             totalPrice: 0,
 
             isShowModal: false,
+
+            idCheckedNames: [], //потом сделать функцию аксиос и передавать массив в нее для отправки
+            totalPrice: 0
+
+
         }
     },
     created() {
@@ -96,6 +103,7 @@ export default {
             } catch (error) {
                 this.errors.push(error);
             }
+
         },
         showModal() {
             this.isShowModal = true;
