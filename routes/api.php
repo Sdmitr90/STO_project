@@ -58,3 +58,31 @@ Route::group(['middleware' => 'auth:api'], function(){
     });
 });
 
+Route::group([
+    'middleware' => 'cors'
+], function () {
+    Route::post('/calculate', [\App\Http\Controllers\CalculatorController::class, 'calculate']);
+});
+
+Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index'])
+    ->middleware ('cors');
+
+Route::group([
+    'prefix' => 'TechServiceType',
+    'middleware' => 'cors'
+], function () {
+    Route::get('', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
+
+    Route::get('/{id}', [\App\Http\Controllers\TechServiceTypeController::class, 'servicesTypeId'])
+        ->where('id', '[0-9]+')
+        ->name("TechServiceType::servicesTypeId");
+
+    Route::get('create', [\App\Http\Controllers\TechServiceTypeController::class, 'create'])
+        ->name("create");
+
+    Route::get('update', [\App\Http\Controllers\TechServiceTypeController::class, 'update'])
+        ->name("update");
+
+    Route::get('delete', [\App\Http\Controllers\TechServiceTypeController::class, 'delete'])
+        ->name("delete");
+});
