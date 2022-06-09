@@ -29,13 +29,7 @@ use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 //     return view('welcome');
 // })->name('main');
 
-Route::get('/calculateExample', [CalculatorController::class, 'index']);
-
-Route::post('/calculate', [CalculatorController::class, 'calculate'])
-    ->name("calculate");
-//    ->middleware ('cors');
-
-
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::post('register', [RegisterController::class, 'register']);
@@ -120,23 +114,5 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.'], function () {
     Route::resource('services', AdminServiceController::class);
 });
 
-Route::get('/Services', [\App\Http\Controllers\ServicesController::class, 'index']);
+Route::get('/calculateExample', [CalculatorController::class, 'index']);
 
-Route::group([
-    'prefix' => 'TechServiceType'
-], function () {
-    Route::get('', [\App\Http\Controllers\TechServiceTypeController::class, 'index']);
-
-    Route::get('/{id}', [\App\Http\Controllers\TechServiceTypeController::class, 'servicesTypeId'])
-        ->where('id', '[0-9]+')
-        ->name("TechServiceType::servicesTypeId");
-
-    Route::get('create', [\App\Http\Controllers\TechServiceTypeController::class, 'create'])
-        ->name("create");
-
-    Route::get('update', [\App\Http\Controllers\TechServiceTypeController::class, 'update'])
-        ->name("update");
-
-    Route::get('delete', [\App\Http\Controllers\TechServiceTypeController::class, 'delete'])
-        ->name("delete");
-});
