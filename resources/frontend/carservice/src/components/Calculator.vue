@@ -20,9 +20,15 @@
                         </label>
                     </div>
                 </div>
-                <div class="wrapper__btn" @click="createdCheckedNames">
-                    ЗАПИСАТЬСЯ
+                <div class="wrapper__btn-set">
+                    <div class="wrapper__btn" @click="createdCheckedNames">
+                        РАССЧИТАТЬ
+                    </div>
+                    <div class="wrapper__btn" id="show-modal" @click="showModal">
+                        ЗАПИСАТЬСЯ
+                    </div>
                 </div>
+
             </form>
             <div class="wrapper__cost">
                 <p>Примерная стоимость работ</p>
@@ -31,21 +37,32 @@
                 </div>
             </div>
         </div>
+        <RecordForm v-if="isShowModal" @closeModal="closeModal" />
     </section>
 </template>
 <script>
 import axios from 'axios'
 
+import RecordForm from "./RecordForm.vue";
+
 export default {
     name: "Calculator",
+    components: {RecordForm},
     data() {
         return {
             typeOfWork: [],
             nameOfTheWork: [],
             errors: [],
 
+
+            idCheckedNames: [],
+            totalPrice: 0,
+
+            isShowModal: false,
+
             idCheckedNames: [], //потом сделать функцию аксиос и передавать массив в нее для отправки
             totalPrice: 0
+
 
         }
     },
@@ -86,6 +103,13 @@ export default {
             } catch (error) {
                 this.errors.push(error);
             }
+
+        },
+        showModal() {
+            this.isShowModal = true;
+        },
+        closeModal() {
+            this.isShowModal = false;
         }
     }
 }
@@ -100,7 +124,7 @@ form {
 
 .wrapper {
     max-width: 1440px;
-    min-height: 723px;
+    min-height: 100%;
     margin: 0 auto;
     padding-top: 88px;
     box-sizing: border-box;
@@ -134,6 +158,9 @@ form {
             font-size: 18px;
         }
     }
+    &__btn-set {
+        display: flex;
+    }
     &__btn {
         width: 296px;
         height: 64px;
@@ -153,7 +180,7 @@ form {
         margin-top: 40px;
         padding-bottom: 200px;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         p {
             font-size: 28px;
             line-height: 38px;

@@ -31,6 +31,7 @@
     display: flex;
     justify-content: space-between;
     background: rgba(240, 240, 240, 0.8);
+    backdrop-filter: blur(15px);
     padding: 8px 24px;
 
     &__logo {

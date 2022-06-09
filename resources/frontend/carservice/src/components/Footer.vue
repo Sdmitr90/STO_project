@@ -20,6 +20,7 @@
     font-size: 28px;
     font-weight: 600;
     background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
     color: #FF6433;
     &__copy {
     }
