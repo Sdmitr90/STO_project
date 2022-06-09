@@ -19,3 +19,7 @@ Laravel 8 version - Cuba Theme Support
 admin@test.com
 
 1234
+
+CORS: http://Localhost:5050
+
+Swagger: http://sto/api/documentation (sto - DomenName (127.0.0.1:8080))
