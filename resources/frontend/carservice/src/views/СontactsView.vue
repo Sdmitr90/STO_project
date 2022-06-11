@@ -9,13 +9,12 @@
 <script>
 import Contacts from "../components/contacts.vue";
 export default {
-    components: {Contacts}
-}
-
+    components: { Contacts },
+};
 </script>
 
 <style scoped lang="scss">
-.mid{
+.mid {
     background: rgba(0, 0, 0, 0.67);
 }
 </style>

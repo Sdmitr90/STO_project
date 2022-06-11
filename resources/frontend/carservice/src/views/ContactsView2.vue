@@ -2,20 +2,20 @@
     <section class="mid">
         <div class="main container">
             <Contacts />
-            
         </div>
     </section>
 </template>
 
-<script setup>
-import Contacts from "../components/contacts.vue"
+<script>
+import Contacts from "../components/Contacts.vue";
+
+export default {
+    components: { Contacts },
+};
 </script>
 
 <style scoped lang="scss">
-
-.mid{
+.mid {
     background: rgba(0, 0, 0, 0.67);
 }
-    
-
 </style>
