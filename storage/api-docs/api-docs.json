@@ -2,16 +2,16 @@
     "openapi": "3.0.0",
     "info": {
         "title": "OpenApi Documentation",
-        "description": "Документация для авто-сервиса",
+        "description": "Документация API для сайта технического обслуживания автомобилей",
         "version": "1.0.0"
     },
     "paths": {
-        "/calculate": {
+        "/Calculate": {
             "post": {
                 "tags": [
-                    "calculate"
+                    "Calculate"
                 ],
-                "summary": "calculate all services to the coefficients",
+                "summary": "Рассчитать стоимость выбранных сервисов",
                 "operationId": "servicesId",
                 "requestBody": {
                     "description": "введите id необходимых сервисов, Response в первой строке, в самом начале(посчитанная сумма), остальное - Debugger, если включен",
@@ -103,7 +103,7 @@
         "/TechServiceType/{id}": {
             "get": {
                 "tags": [
-                    "TechServiceType by id"
+                    "TechServiceType/id"
                 ],
                 "summary": "Получить список сервисов выбранной категории",
                 "description": "Получаем список сервисов выбранной категории",
@@ -136,8 +136,8 @@
     "components": {
         "schemas": {
             "Calculator": {
-                "title": "getCalculate",
-                "description": "calculate all services to the coefficients",
+                "title": "Calculate",
+                "description": "Рассчет стоимости выбранных сервисов",
                 "xml": {
                     "name": "Calculate"
                 }

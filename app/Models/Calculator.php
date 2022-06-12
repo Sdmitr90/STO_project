@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @OA\Schema(
- *     title="getCalculate",
- *     description="calculate all services to the coefficients",
+ *     title="Calculate",
+ *     description="Рассчет стоимости выбранных сервисов",
  *     @OA\Xml(
  *         name="Calculate"
  *     )

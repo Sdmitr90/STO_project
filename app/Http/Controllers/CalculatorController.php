@@ -10,10 +10,10 @@ class CalculatorController extends Controller
 {
     /**
      * *@OA\Post(
-     *     path="/calculate",
-     *     tags={"calculate"},
+     *     path="/Calculate",
+     *     tags={"Calculate"},
      *     operationId="servicesId",
-     *     summary="calculate all services to the coefficients",
+     *     summary="Рассчитать стоимость выбранных сервисов",
      *     @OA\RequestBody(
      *         description="введите id необходимых сервисов, Response в первой строке, в самом начале(посчитанная сумма), остальное - Debugger, если включен",
      *         required=true,

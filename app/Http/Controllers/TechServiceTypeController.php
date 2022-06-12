@@ -38,7 +38,7 @@ class TechServiceTypeController extends Controller
      * * @OA\Get(
      *      path="/TechServiceType/{id}",
      *      operationId="servicesTypeId",
-     *      tags={"TechServiceType by id"},
+     *      tags={"TechServiceType/id"},
      *      summary="Получить список сервисов выбранной категории",
      *      description="Получаем список сервисов выбранной категории",
      *     @OA\Parameter(

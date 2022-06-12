@@ -22,7 +22,7 @@
                         <textarea v-model="comment"></textarea>
                     </div>
                     <div class="mask__wrapper__container__footer">
-                        <div class="mask__wrapper__container__footer__btn" @click="createAnEntry, closeModal">
+                        <div class="mask__wrapper__container__footer__btn" @click="closeModal">
                             ЗАПИСАТЬСЯ
                         </div>
                     </div>

@@ -11,7 +11,7 @@ use Illuminate\Routing\Controller as BaseController;
  * @OA\Info(
  *      version="1.0.0",
  *      title="OpenApi Documentation",
- *      description="Документация для авто-сервиса",
+ *      description="Документация API для сайта технического обслуживания автомобилей",
  * )
  */
 
